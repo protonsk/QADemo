@@ -36,7 +36,7 @@
 
 ## Test basis :mag:
 
-In this project I prepared test for 2 resources - Reqres.in and Wahapedia.org:
+In this project I've created tests for 2 resources - Reqres.in and Wahapedia.org:
 
 * API:
 
