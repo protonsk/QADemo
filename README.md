@@ -10,10 +10,7 @@
 * <a href="#code">Code</a>
     + <a href="#intelij">InteliJ IDEA, Java, JUnit 5, Selenide, Rest Assured</a>
     + <a href="#maven">Maven</a>
-* <a href="#screenshot">Screenshots and videos </a>
-    + <a href="#selenoid">Selenoid</a>
-    + <a href="#jenkins">Jenkins</a>
-    + <a href="#allure">Allure Report</a>
+
 
 <a id="stack"></a>
 
@@ -36,17 +33,16 @@
 
 ## Test basis :mag:
 
-In this project I've created tests for 2 resources - Reqres.in and Wahapedia.org:
+In this project I've created tests for 2 resources - Reqres.in and Wahapedia.ru:
 
-* API:
+* API work with:
 
-:white_check_mark: Work with POJO
+:white_check_mark: POJO
 
-:white_check_mark: Work with GET, POST, PUT, PATCH, DELETE
+:white_check_mark: GET, POST, PUT, PATCH, DELETE
 
-:white_check_mark: Work with 2xx, 4xx status code
+:white_check_mark: Status codes
 
-:white_check_mark: Work with lambda and stream
 
 * UI:
 
@@ -64,7 +60,7 @@ In this project I've created tests for 2 resources - Reqres.in and Wahapedia.org
 
 ```bash
 mvn clean test 
--Dtests=${TEST_TYPE}
+-Dtest=${TEST_TYPE}
 
 ```
 
@@ -72,7 +68,7 @@ mvn clean test
 
 ```bash
 mvn clean test 
--Dtests=${TEST_TYPE}
+-Dtest=${TEST_TYPE}
 -Dhost=remote
 
 ```
@@ -112,7 +108,7 @@ public class UserListTest extends TestBase {
                                 .then().log().all()
                                 .extract().body().jsonPath().getList("data", User.class)));
 
-        step("Check what user list is not empty", () ->
+        step("Check that user list is not empty", () ->
                 assertFalse(userList.get().isEmpty()));
     }
 }
@@ -139,7 +135,7 @@ public class WahapediaTest extends TestBase {
                         .chooseWHGame()
                         .getHeaderText()));
 
-        step("Assert what we open right game", () ->
+        step("Assert that we open right game", () ->
                 assertEquals(mainPageHeaderText, headerText.get()));
     }
 }
