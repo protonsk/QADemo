@@ -45,15 +45,16 @@ This project contains API and UI tests:
 
 @Tags({@Tag("CREATING_USER"), @Tag("REGRESS"), @Tag("API")})
 @Owner("proto")
-@DisplayName("Creating user")
+@Feature("Creating and registering user")
+@DisplayName("Creating and registering user")
 public class CreateUserTest extends TestBase {
 
     @Test
-    @DisplayName("Check success create user")
-    void successCreateUserTest() {
+    @DisplayName("Creating user")
+    void creatingUserTest() {
         AtomicReference<CreateUser> user = new AtomicReference<>(new CreateUser("morpheus", "leader"));
 
-        step("Send request for create user", () -> user.set(given()
+        step("Creating user request", () -> user.set(given()
                 .spec(Specifications.reqSpec)
                 .when()
                 .body(user)
@@ -61,24 +62,24 @@ public class CreateUserTest extends TestBase {
                 .then().spec(Specifications.resSpec.statusCode(201)).log().all()
                 .extract().as(CreateUser.class)));
 
-        step("Check new user have id", () ->
+        step("Check the Id of new user", () ->
                 assertNotNull(user.get().getId()));
     }
 }
 ```
 
-> *Simple UI autotest realisation*
+> *UI test*
 
 ```java
 
-@Tags({@Tag("UI"), @Tag("REGRESS")})
+@Tags({@Tag("REGRESS"), @Tag("UI")})
 @Owner("proto")
-@Feature("Test some Web resource")
+@Feature("Test AccuWeather site")
 @DisplayName("AccuWeather UI tests")
 public class AccuWeatherTest extends TestBase {
 
     @Test
-    @DisplayName("Main page text check")
+    @DisplayName("Main page Title check")
     public void checkMainPageText() {
         final String expectedText = "Ежедневный прогноз погоды для областей, стран и глобальный прогноз | AccuWeather";
         AtomicReference<String> headerText = new AtomicReference<>();
