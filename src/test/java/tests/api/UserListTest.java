@@ -37,7 +37,7 @@ public class UserListTest extends TestBase {
                                 .then().spec(Specifications.resSpec.statusCode(200)).log().all()
                                 .extract().body().jsonPath().getList("data", User.class)));
 
-        step("Check what user list is not empty", () ->
+        step("Check that user list is not empty", () ->
                 assertFalse(userList.get().isEmpty()));
     }
 
@@ -59,8 +59,8 @@ public class UserListTest extends TestBase {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Funke"})
-    @DisplayName("Check last name of Tobias")
+    @ValueSource(strings = {"Edwards", "Tobias"})
+    @DisplayName("Check last name of George")
     void checkLastNameTest(String expectedLastName) {
         AtomicReference<String> actualLastName = new AtomicReference<>();
 
@@ -72,7 +72,7 @@ public class UserListTest extends TestBase {
                                 .get(Reqres.users, 2)
                                 .then().spec(Specifications.resSpec.statusCode(200)).log().all()
                                 .extract().body().jsonPath().getList("data", User.class)
-                                .stream().filter(user -> user.getFirstName().equals("Tobias"))
+                                .stream().filter(user -> user.getFirstName().equals("George"))
                                 .findFirst().get().getLastName()));
 
         step("Check actual last name", () ->
