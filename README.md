@@ -1,43 +1,41 @@
-<a href="https://github.com/"><img alt="github.com" height="50" src="readme_files/technologies/github.svg"/></a>
-
 # QA demo project
 
 ## Technologies
 
-<div>
-* IntelliJ IDEA
-* JAVA
-* JUnit5
-* Selenide
-* REST-assured
-* Selenoid
-* Maven
-</div>
+<UL>
+<LI>IntelliJ IDEA
+<LI>JAVA
+<LI>JUnit5
+<LI>Selenide
+<LI>REST-assured
+<LI>Selenoid
+<LI>Maven
+</UL>
 
 ## Tests
 
 This project contains API and UI tests:
+<UL>
+<LI>API tests of Reqres.in (free real API simulator)
+<UL>
+<LI>REST-assured
 
-* API tests of Reqres.in (free real API simulator)
+<LI>GET, POST, PUT, DELETE
 
-:white_check_mark: REST-assured
+<LI>Status codes
+</UL>
 
-:white_check_mark: GET, POST, PUT, DELETE
+<LI>UI tests of AccuWewather.com
+<UL>
+<LI>PageObject
 
-:white_check_mark: Status codes
+<LI>Check page Title
 
+<LI>Input the text for search
 
-* UI tests of AccuWewather.com:
-
-:white_check_mark: PageObject
-
-:white_check_mark: Check page Title
-
-:white_check_mark: Input the text for search
-
-:white_check_mark: Check new page 
-
-
+<LI>Check new page 
+</UL>
+</UL>
 ## Code examples
 
 
