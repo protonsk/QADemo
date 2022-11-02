@@ -2,18 +2,7 @@
 
 # QA demo project
 
-## Content
-
-* <a href="#stack">Technology stack</a>
-* <a href="#objects">Tests</a>
-* <a href="#console">Run test from comandline</a>
-* <a href="#code">Code</a>
-
-
-
-<a id="stack"></a>
-
-## Technology stack
+## Technologies
 
 <div align="center">
 <a href="https://www.jetbrains.com/idea/"><img alt="InteliJ IDEA" height="50" src="readme_files/technologies/intelij_idea.svg" width="50"/></a>
@@ -23,29 +12,24 @@
 <a href="https://rest-assured.io/"><img alt="Rest Assured" height="50" src="readme_files/technologies/rest_assured.png" width="50"/></a>
 <a href="https://aerokube.com/selenoid/"><img alt="Selenoid" height="50" src="readme_files/technologies/selenoid.svg" width="50"/></a>
 <a href="https://maven.apache.org/"><img alt="Maven" height="50" src="readme_files/technologies/maven.png" width="50"/></a>
-<a href="https://www.jenkins.io/"><img alt="Jenkins" height="50" src="readme_files/technologies/jenkins.svg" width="50"/></a>
-<a href="https://github.com/allure-framework/"><img alt="Allure" height="50" src="readme_files/technologies/allure.svg" width="50"/></a>
-<a href="https://github.com/"><img alt="GitHub" height="50" src="readme_files/technologies/github.svg" width="50"/></a>
 </div>
-
-<a id="objects"></a>
 
 ## Tests
 
-In this project I've created tests for 2 resources - Reqres.in and AccuWeather.com:
+This project contains API and UI tests:
 
-* API work with:
+* API tests of Reqres.in (free real API simulator)
 
-:white_check_mark: POJO
+:white_check_mark: REST-assured
 
 :white_check_mark: GET, POST, PUT, DELETE
 
 :white_check_mark: Status codes
 
 
-* UI:
+* UI tests of AccuWewather.com:
 
-:white_check_mark: Work with PageObject
+:white_check_mark: PageObject
 
 :white_check_mark: Check page Title
 
@@ -53,41 +37,16 @@ In this project I've created tests for 2 resources - Reqres.in and AccuWeather.c
 
 :white_check_mark: Check new page 
 
-<a id="console"></a>
 
-## Local run
-
-```bash
-mvn clean test 
--Dtest=${TEST_TYPE}
-
-```
-
-## Selenoid run
-
-```bash
-mvn clean test 
--Dtest=${TEST_TYPE}
--Dhost=remote
-
-```
-
-> `${TEST_TYPE}` - JUnit filtering by Tags  [ *REGRESS* <sub>(default)</sub> , *API*, *UI* ]
->
+## Code examples
 
 
-<a id="code"></a>
-
-## Code
-
-
-> *Simple API autotest realisation*
+> *API test*
 
 ```java
 
-@Tags({@Tag("API"), @Tag("CREATE_USER"), @Tag("REGRESS")})
+@Tags({@Tag("CREATING_USER"), @Tag("REGRESS"), @Tag("API")})
 @Owner("proto")
-@Feature("Work with reqres.in create user method")
 @DisplayName("Creating user")
 public class CreateUserTest extends TestBase {
 
