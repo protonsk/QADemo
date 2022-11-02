@@ -1,11 +1,11 @@
 <a href="https://github.com/"><img alt="github.com" height="50" src="readme_files/technologies/github.svg"/></a>
 
-# GitHub. QA demo project
+# QA demo project
 
 ## Content :bookmark_tabs:
 
 * <a href="#stack">Technology stack</a>
-* <a href="#objects">Test basis</a>
+* <a href="#objects">Tests</a>
 * <a href="#console">Run test from comandline</a>
 * <a href="#code">Code</a>
     + <a href="#intelij">InteliJ IDEA, Java, JUnit 5, Selenide, Rest Assured</a>
@@ -31,7 +31,7 @@
 
 <a id="objects"></a>
 
-## Test basis :mag:
+## Tests :mag:
 
 In this project I've created tests for 2 resources - Reqres.in and AccuWeather.com:
 
@@ -91,7 +91,7 @@ mvn clean test
 
 @Tags({@Tag("API"), @Tag("CREATE_USER"), @Tag("REGRESS")})
 @Owner("proto")
-@Feature("Work with reqres create user method")
+@Feature("Work with reqres.in create user method")
 @DisplayName("Creating user")
 public class CreateUserTest extends TestBase {
 
