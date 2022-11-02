@@ -52,7 +52,7 @@ In this project I've created tests for 2 resources - Reqres.in and AccuWeather.c
 
 :white_check_mark: Input the text for search
 
-:white_check_mark: Check that new page is correct 
+:white_check_mark: Check new page 
 
 <a id="console"></a>
 
@@ -89,27 +89,27 @@ mvn clean test
 
 ```java
 
-@Tags({@Tag("API"), @Tag("USER_LIST"), @Tag("REGRESS")})
+@Tags({@Tag("API"), @Tag("CREATE_USER"), @Tag("REGRESS")})
 @Owner("proto")
-@Feature("Work with reqres user lists")
-@DisplayName("Test user lists")
-public class UserListTest extends TestBase {
+@Feature("Work with reqres create user method")
+@DisplayName("Creating user")
+public class CreateUserTest extends TestBase {
+
     @Test
-    @DisplayName("List of Users is not Empty")
-    void listOfUsersNotEmptyTest() {
-        Specifications.setUpSpec(Specifications.reqSpec(), Specifications.resSpec(200));
-        AtomicReference<List<User>> userList = new AtomicReference<>();
+    @DisplayName("Check success create user")
+    void successCreateUserTest() {
+        AtomicReference<CreateUser> user = new AtomicReference<>(new CreateUser("morpheus", "leader"));
 
-        step("Given a list of users from site", () ->
-                userList.set(
-                        given()
-                                .when()
-                                .get(Reqres.users, 2)
-                                .then().log().all()
-                                .extract().body().jsonPath().getList("data", User.class)));
+        step("Send request for create user", () -> user.set(given()
+                .spec(Specifications.reqSpec)
+                .when()
+                .body(user)
+                .post(Reqres.createUser)
+                .then().spec(Specifications.resSpec.statusCode(201)).log().all()
+                .extract().as(CreateUser.class)));
 
-        step("Check that user list is not empty", () ->
-                assertFalse(userList.get().isEmpty()));
+        step("Check new user have id", () ->
+                assertNotNull(user.get().getId()));
     }
 }
 ```
@@ -121,80 +121,22 @@ public class UserListTest extends TestBase {
 @Tags({@Tag("UI"), @Tag("REGRESS")})
 @Owner("proto")
 @Feature("Test some Web resource")
-@DisplayName("Wahapedia UI tests")
-public class WahapediaTest extends TestBase {
+@DisplayName("AccuWeather UI tests")
+public class AccuWeatherTest extends TestBase {
 
     @Test
-    @DisplayName("Test game choose")
+    @DisplayName("Main page text check")
     public void checkMainPageText() {
-        String mainPageHeaderText = "Playing This Game";
+        final String expectedText = "Ежедневный прогноз погоды для областей, стран и глобальный прогноз | AccuWeather";
         AtomicReference<String> headerText = new AtomicReference<>();
 
-        step("Open web resource, choose game and get header text", () ->
-                headerText.set(new WHGameChoosePage()
-                        .chooseWHGame()
+        step("Open site and get header text", () ->
+                headerText.set(new AWMainPage()
                         .getHeaderText()));
 
-        step("Assert that we open right game", () ->
-                assertEquals(mainPageHeaderText, headerText.get()));
+        step("Assert that the header is OK", () ->
+                assertEquals(expectedText, headerText.get()));
     }
 }
 ```
 
-<a id="screenshot"></a>
-
-## Screenshots :camera_flash:
-
-<a id="selenoid"></a>
-
-#### <img alt="Selenoid" height="50" src="readme_files/technologies/selenoid.svg" width="50"/>Selenoid</a>
-
-> *Run UI test on Selenoid*
-
-<table>
-    <tr>
-        <td>
-        <img src="readme_files/SelenoidContainers.png">
-        </a>
-        </td>
-        <td>
-        <img src="readme_files/SelenoidVNC.png">
-        </a>
-        </td>
-        <td>
-        <img src="readme_files/SelenoidVNC2.png">
-        </a>
-        </td>
-    </tr>
-</table>
-
-
-<a id="jenkins"></a>
-
-#### <img alt="Jenkins" height="50" src="readme_files/technologies/jenkins.svg" width="50"/>Jenkins</a>
-
-> *Local Jenkins in docker*
-
-<a>
-<img src="readme_files/JenkinsSimpleProject.png" alt="Jenkins">
-</a>
-
-
-
-<a id="allure"></a>
-
-#### </a><img alt="Allure" height="50" src="readme_files/technologies/allure.svg" width="50"/>Allure Report</a>
-
-> *Allure reporting*
-
-<table>
-    <tr>
-        <td>
-        <img src="readme_files/AllureReport.png">
-        </a>
-        </td>
-        <td>
-        <img src="">
-        </a>
-        </td>
-</table>
