@@ -4,13 +4,13 @@ import lombok.Data;
 
 @Data
 public class CreateUser {
+    private String id;
+    private String email;
     private String name;
     private String job;
-    private String id;
     private String createdAt;
-    private String email;
-    private String error;
     private String updatedAt;
+    private String error;
 
     public CreateUser() {
     }

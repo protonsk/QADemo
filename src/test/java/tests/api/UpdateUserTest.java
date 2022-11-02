@@ -18,18 +18,18 @@ import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.*;
 
-@Tags({@Tag("API"), @Tag("UPDATE_USER"), @Tag("REGRESS")})
+@Tags({@Tag("UPDATING_USER"), @Tag("REGRESS"), @Tag("API")})
 @Owner("proto")
-@Feature("Work with reqres update user methods")
-@DisplayName("Update user test")
+@Feature("Updating user")
+@DisplayName("Updating user test")
 public class UpdateUserTest extends TestBase {
 
     @Test
-    @DisplayName("Check success update user by PUT")
-    void successCreateUserByPutTest() {
+    @DisplayName("Updating user with PUT request")
+    void updatingUserWithPutTest() {
         AtomicReference<CreateUser> user = new AtomicReference<>(new CreateUser("morpheus", "zion resident"));
 
-        step("Send request for update user", () -> user.set(given()
+        step("Updating user with PUT", () -> user.set(given()
                 .when()
                 .spec(Specifications.reqSpec)
                 .body(user)
@@ -37,7 +37,7 @@ public class UpdateUserTest extends TestBase {
                 .then().spec(Specifications.resSpec.statusCode(200)).log().all()
                 .extract().as(CreateUser.class)));
 
-        step("Check last update time", () ->{
+        step("Checking the updatedAt requisite", () ->{
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
             format.setTimeZone(TimeZone.getTimeZone("UTC"));
             assertTrue(user.get().getUpdatedAt().contains(format.format(new Date())),
@@ -46,10 +46,10 @@ public class UpdateUserTest extends TestBase {
     }
 
     @Test
-    @DisplayName("Check success DELETE")
-    void successDeleteUserTest() {
+    @DisplayName("Deleting the user with DELETE")
+    void deletingUserTest() {
 
-        step("Send request for delete user", () -> given()
+        step("Deleting the user", () -> given()
                 .when()
                 .spec(Specifications.reqSpec)
                 .delete(Reqres.updateUser, 2)

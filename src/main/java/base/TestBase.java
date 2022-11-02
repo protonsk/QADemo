@@ -30,7 +30,7 @@ abstract public class TestBase {
         if (System.getProperty("host", "local").equals("remote")) {
             isRemoteDriver = true;
             Configuration.driverManagerEnabled = false;
-            Configuration.browserCapabilities = getRemoteWDCapabilities();
+            Configuration.browserCapabilities = getRemoteCapabilities();
             Configuration.remote = CONFIG.getString("serverUrl");
         } else {
             Configuration.browser = System.getProperty("browser", "chrome");
@@ -47,10 +47,10 @@ abstract public class TestBase {
         Selenide.closeWebDriver();
     }
 
-    private static DesiredCapabilities getRemoteWDCapabilities() throws MalformedURLException {
+    private static DesiredCapabilities getRemoteCapabilities() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", "chrome");
-        capabilities.setCapability("browserVersion", "105.0");
+        capabilities.setCapability("browserVersion", "107.0");
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
                 "enableVideo", true

@@ -17,18 +17,18 @@ import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.*;
 
-@Tags({@Tag("API"), @Tag("USER_LIST"), @Tag("REGRESS")})
+@Tags({@Tag("USERS_LIST"), @Tag("REGRESS"), @Tag("API")})
 @Owner("proto")
-@Feature("Work with reqres user lists")
-@DisplayName("Test user lists")
-public class UserListTest extends TestBase {
+@Feature("Users list")
+@DisplayName("Users list")
+public class UsersListTest extends TestBase {
 
     @Test
-    @DisplayName("List of Users is not Empty")
-    void listOfUsersNotEmptyTest() {
+    @DisplayName("Users list isn't Empty")
+    void usersListNotEmptyTest() {
         AtomicReference<List<User>> userList = new AtomicReference<>();
 
-        step("Given a list of users from site", () ->
+        step("Getting a users list with GET", () ->
                 userList.set(
                         given()
                                 .when()
@@ -37,16 +37,17 @@ public class UserListTest extends TestBase {
                                 .then().spec(Specifications.resSpec.statusCode(200)).log().all()
                                 .extract().body().jsonPath().getList("data", User.class)));
 
-        step("Check that user list is not empty", () ->
+        step("Check that users list isn't empty", () ->
                 assertFalse(userList.get().isEmpty()));
     }
 
     @Test
-    @DisplayName("Check size of User List")
-    void checkSizeOfUserListTest() {
+    @DisplayName("Checking the size of Users List")
+    void checkingSizeOfUsersListTest() {
         AtomicReference<List<User>> userList = new AtomicReference<>();
+        final int expectedRes = 6;
 
-        step("Given a list of users from site", () -> userList.set(
+        step("Getting a users list with GET", () -> userList.set(
                 given()
                         .when()
                         .spec(Specifications.reqSpec)
@@ -54,17 +55,17 @@ public class UserListTest extends TestBase {
                         .then().spec(Specifications.resSpec.statusCode(200)).log().all()
                         .extract().body().jsonPath().getList("data", User.class)));
 
-        step("Check what user list is not empty", () ->
-                assertEquals(6, userList.get().size()));
+        step("Checking the size of users list", () ->
+                assertEquals(expectedRes, userList.get().size()));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"Edwards", "Tobias"})
-    @DisplayName("Check last name of George")
-    void checkLastNameTest(String expectedLastName) {
+    @DisplayName("Checking the last name of <George>")
+    void checkingLastNameTest(String expectedRes) {
         AtomicReference<String> actualLastName = new AtomicReference<>();
 
-        step("Get lastname of Tobias", () ->
+        step("Getting the last name of George", () ->
                 actualLastName.set(
                         given()
                                 .when()
@@ -76,6 +77,6 @@ public class UserListTest extends TestBase {
                                 .findFirst().get().getLastName()));
 
         step("Check actual last name", () ->
-                assertEquals(expectedLastName, actualLastName.get()));
+                assertEquals(expectedRes, actualLastName.get()));
     }
 }

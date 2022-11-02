@@ -14,14 +14,14 @@ import java.util.concurrent.atomic.AtomicReference;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Tags({@Tag("UI"), @Tag("REGRESS")})
+@Tags({@Tag("REGRESS"), @Tag("UI")})
 @Owner("proto")
-@Feature("Test some Web resource")
+@Feature("Test AccuWeather site")
 @DisplayName("AccuWeather UI tests")
 public class AccuWeatherTest extends TestBase {
 
     @Test
-    @DisplayName("Main page text check")
+    @DisplayName("Main page Title check")
     public void checkMainPageText() {
         final String expectedText = "Ежедневный прогноз погоды для областей, стран и глобальный прогноз | AccuWeather";
         AtomicReference<String> headerText = new AtomicReference<>();
