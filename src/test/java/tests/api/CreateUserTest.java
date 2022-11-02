@@ -18,18 +18,18 @@ import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@Tags({@Tag("API"), @Tag("CREATE_USER"), @Tag("REGRESS")})
+@Tags({@Tag("CREATING_USER"), @Tag("REGRESS"), @Tag("API")})
 @Owner("proto")
-@Feature("Work with reqres create user method")
-@DisplayName("Creating user")
+@Feature("Creating and registering user")
+@DisplayName("Creating and registering user")
 public class CreateUserTest extends TestBase {
 
     @Test
-    @DisplayName("Check success create user")
-    void successCreateUserTest() {
+    @DisplayName("Creating user")
+    void creatingUserTest() {
         AtomicReference<CreateUser> user = new AtomicReference<>(new CreateUser("morpheus", "leader"));
 
-        step("Send request for create user", () -> user.set(given()
+        step("Creating user request", () -> user.set(given()
                 .spec(Specifications.reqSpec)
                 .when()
                 .body(user)
@@ -37,25 +37,25 @@ public class CreateUserTest extends TestBase {
                 .then().spec(Specifications.resSpec.statusCode(201)).log().all()
                 .extract().as(CreateUser.class)));
 
-        step("Check new user have id", () ->
+        step("Check the Id of new user", () ->
                 assertNotNull(user.get().getId()));
     }
 
     @Test
-    @DisplayName("Check unsuccessful registration user")
-    void unsuccessfulRegistrationUserTest() {
+    @DisplayName("Unsuccessful registration of the user")
+    void unRegistrationUserTest() {
         AtomicReference<CreateUser> user = new AtomicReference<>(new CreateUser());
         user.get().setEmail("sydney@fife");
 
-        step("Send request for registration user", () -> user.set(given()
+        step("Registration of the user request", () -> user.set(given()
                 .when()
                 .spec(Specifications.reqSpec)
                 .body(user)
-                .post(Reqres.regUser)
+                .post(Reqres.registerUser)
                 .then().spec(Specifications.resSpec.statusCode(400)).log().all()
                 .extract().as(CreateUser.class)));
 
-        step("Check error description", () ->
+        step("Check returned error", () ->
                 assertEquals("Missing password", user.get().getError()));
     }
 }

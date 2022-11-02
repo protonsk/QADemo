@@ -15,7 +15,7 @@ public class AWCityPage {
         WaitForElement(cityName);
         return cityName.text();
     }
-
+    //Wait for rendering
     public void WaitForElement(SelenideElement el) {
         el.should(visible, Duration.ofSeconds(3));
     }

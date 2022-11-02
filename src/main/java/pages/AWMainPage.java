@@ -8,14 +8,11 @@ import static com.codeborne.selenide.Selenide.$x;
 public class AWMainPage {
     public final static String BASE_URL = "https://www.accuweather.com/";
 
-    //private final SelenideElement pageHeader = $x("//span[@class = 'page_header_span' ]");
-    //data entry field
+    //Search data entry field
     private final SelenideElement searchLocation = $x("//input[@class = 'search-input' ]");
-    //private final SelenideElement searchBtn = $x("//span[@text = 'Location' ]");
 
     //Check the Title of a page
     public String getHeaderText(){
-        //return pageHeader.text();
         return Selenide.title();
     }
 
@@ -31,6 +28,7 @@ public class AWMainPage {
 
     public AWMainPage() throws InterruptedException {
         openPage(BASE_URL);
+        //because of my network delay
         Thread.sleep(5000);
     }
 
