@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @Tags({@Tag("API"), @Tag("CREATE_USER"), @Tag("REGRESS")})
 @Owner("proto")
 @Feature("Work with reqres create user method")
-@DisplayName("Test create user")
+@DisplayName("Creating user")
 public class CreateUserTest extends TestBase {
 
     @Test

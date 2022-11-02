@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @Tags({@Tag("API"), @Tag("UPDATE_USER"), @Tag("REGRESS")})
 @Owner("proto")
 @Feature("Work with reqres update user methods")
-@DisplayName("Test update user")
+@DisplayName("Update user test")
 public class UpdateUserTest extends TestBase {
 
     @Test
@@ -46,29 +46,8 @@ public class UpdateUserTest extends TestBase {
     }
 
     @Test
-    @DisplayName("Check success update user by PATCH")
-    void successCreateUserByPatchTest() {
-        AtomicReference<CreateUser> user = new AtomicReference<>(new CreateUser("morpheus", "zion resident"));
-
-        step("Send request for update user", () -> user.set(given()
-                .when()
-                .spec(Specifications.reqSpec)
-                .body(user)
-                .patch(Reqres.updateUser, 2)
-                .then().spec(Specifications.resSpec.statusCode(200)).log().all()
-                .extract().as(CreateUser.class)));
-
-        step("Check last update time", () ->{
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
-            format.setTimeZone(TimeZone.getTimeZone("UTC"));
-            assertTrue(user.get().getUpdatedAt().contains(format.format(new Date())),
-                    String.format("%s do not contains %s", user.get().getUpdatedAt(), format.format(new Date())));
-        });
-    }
-
-    @Test
-    @DisplayName("Check success update user by DELETE")
-    void successCreateUserByDeleteTest() {
+    @DisplayName("Check success DELETE")
+    void successDeleteUserTest() {
 
         step("Send request for delete user", () -> given()
                 .when()

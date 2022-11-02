@@ -33,13 +33,13 @@
 
 ## Test basis :mag:
 
-In this project I've created tests for 2 resources - Reqres.in and Wahapedia.ru:
+In this project I've created tests for 2 resources - Reqres.in and AccuWeather.com:
 
 * API work with:
 
 :white_check_mark: POJO
 
-:white_check_mark: GET, POST, PUT, PATCH, DELETE
+:white_check_mark: GET, POST, PUT, DELETE
 
 :white_check_mark: Status codes
 
@@ -48,11 +48,11 @@ In this project I've created tests for 2 resources - Reqres.in and Wahapedia.ru:
 
 :white_check_mark: Work with PageObject
 
-:white_check_mark: Find element
+:white_check_mark: Check page Title
 
-:white_check_mark: Check element text
+:white_check_mark: Input the text for search
 
-:white_check_mark: Work with element collections
+:white_check_mark: Check that new page is correct 
 
 <a id="console"></a>
 
