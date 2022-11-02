@@ -4,14 +4,14 @@
 
 ## Technologies
 
-<div align="center">
-<a href="https://www.jetbrains.com/idea/"><img alt="InteliJ IDEA" height="50" src="readme_files/technologies/intelij_idea.svg" width="50"/></a>
-<a href="https://www.java.com/"><img alt="Java" height="50" src="readme_files/technologies/java.svg" width="50"/></a>
-<a href="https://junit.org/junit5/"><img alt="JUnit 5" height="50" src="readme_files/technologies/junit5.svg" width="50"/></a>
-<a href="https://selenide.org/"><img alt="Selenide" height="50" src="readme_files/technologies/selenide.svg" width="50"/></a>
-<a href="https://rest-assured.io/"><img alt="Rest Assured" height="50" src="readme_files/technologies/rest_assured.png" width="50"/></a>
-<a href="https://aerokube.com/selenoid/"><img alt="Selenoid" height="50" src="readme_files/technologies/selenoid.svg" width="50"/></a>
-<a href="https://maven.apache.org/"><img alt="Maven" height="50" src="readme_files/technologies/maven.png" width="50"/></a>
+<div>
+* IntelliJ IDEA
+* JAVA
+* JUnit5
+* Selenide
+* REST-assured
+* Selenoid
+* Maven
 </div>
 
 ## Tests
