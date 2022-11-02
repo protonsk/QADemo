@@ -80,9 +80,6 @@ mvn clean test
 
 ## Code
 
-<a id="intelij"></a>
-
-#### <img alt="InteliJ IDEA" height="50" src="readme_files/technologies/intelij_idea.svg" width="50"/>InteliJ IDEA</a><img alt="Java" height="50" src="readme_files/technologies/java.svg" width="50"/>Java</a><img alt="JUnit 5" height="50" src="readme_files/technologies/junit5.svg" width="50"/>JUnit 5</a><img alt="Selenide" height="50" src="readme_files/technologies/selenide.svg" width="50"/>Selenide</a><img alt="Rest Assured" height="50" src="readme_files/technologies/rest_assured.png" width="50"/>Rest Assured</a>
 
 > *Simple API autotest realisation*
 
