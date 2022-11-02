@@ -2,19 +2,18 @@
 
 # QA demo project
 
-## Content :bookmark_tabs:
+## Content
 
 * <a href="#stack">Technology stack</a>
 * <a href="#objects">Tests</a>
 * <a href="#console">Run test from comandline</a>
 * <a href="#code">Code</a>
-    + <a href="#intelij">InteliJ IDEA, Java, JUnit 5, Selenide, Rest Assured</a>
-    + <a href="#maven">Maven</a>
+
 
 
 <a id="stack"></a>
 
-## Technology stack :hammer_and_wrench:
+## Technology stack
 
 <div align="center">
 <a href="https://www.jetbrains.com/idea/"><img alt="InteliJ IDEA" height="50" src="readme_files/technologies/intelij_idea.svg" width="50"/></a>
@@ -31,7 +30,7 @@
 
 <a id="objects"></a>
 
-## Tests :mag:
+## Tests
 
 In this project I've created tests for 2 resources - Reqres.in and AccuWeather.com:
 
@@ -56,7 +55,7 @@ In this project I've created tests for 2 resources - Reqres.in and AccuWeather.c
 
 <a id="console"></a>
 
-## Local run :computer:
+## Local run
 
 ```bash
 mvn clean test 
@@ -64,7 +63,7 @@ mvn clean test
 
 ```
 
-## Selenoid run :computer:
+## Selenoid run
 
 ```bash
 mvn clean test 
@@ -79,7 +78,7 @@ mvn clean test
 
 <a id="code"></a>
 
-## Code :floppy_disk:
+## Code
 
 <a id="intelij"></a>
 
